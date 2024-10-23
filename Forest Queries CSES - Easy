@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long 
+signed  main()
+{
+    int n,q;
+    cin>>n>>q;
+    // i hv tkn ip
+    vector<vector<int>>tree(n+1,vector<int>(n+1,0));
+    char ch;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cin>>ch;
+            if(ch=='*')  tree[i][j]=1;
+        }
+    }
+    
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+           tree[i][j]=tree[i][j]+tree[i-1][j]+tree[i][j-1]-tree[i-1][j-1];
+        }
+    }
+    
+    
+    
+    while(q--){
+        int l,r,x,y;
+        cin>>l>>r>>x>>y;
+        cout<<(tree[x][y]-tree[l-1][y]-tree[x][r-1]+tree[l-1][r-1])<<"\n";
+    }
+    
+    
+    return 0;
+    
+}
