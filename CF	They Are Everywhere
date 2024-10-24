@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+ 
+string s;
+int n, k;
+map<char, int> m;
+ 
+signed main() {
+    cin >> n;
+    cin >> s;
+ 
+    unordered_set<char> f;
+    for (auto i : s) {
+        f.insert(i);  
+    }
+    k = f.size();   
+ 
+    int l = 0, ans = LLONG_MAX;
+    for (int r = 0; r < n; r++) {
+        
+        m[s[r]]++;
+ 
+        while (m.size() == k) {
+            ans = min(ans, r - l + 1);   
+ 
+            m[s[l]]--;
+            if (m[s[l]] == 0) {
+                m.erase(s[l]);   
+            }
+            l++;   
+        }
+    }
+ 
+    cout << (ans == LLONG_MAX ? 0 : ans) << "\n";
+}
