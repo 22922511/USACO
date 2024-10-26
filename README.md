@@ -1,2 +1,2 @@
-# USACO
+# USACO Silver
 ALL PROBLEM SOLVED 
