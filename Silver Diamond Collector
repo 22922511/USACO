@@ -1,0 +1,50 @@
+ #include <bits/stdc++.h>
+ using namespace std;
+  int n,k;
+void ai(int vivek[])  {for(int i=0;i<n;i++) cin>>vivek[i];}
+
+int main()
+{
+  cin>>n>>k;
+ int arr[n];
+ai(arr);
+
+sort(arr,arr+n);
+
+int l=0; 
+int f_cl=-1,f_cr=-1;
+int ans=INT_MIN;
+for(int r=0;r<n;r++){
+    //add
+    while(l<n && arr[r]-arr[l]>k)
+    //remove
+        l++;
+         ans=max(ans,r-l+1);
+         f_cl=l;f_cr=r;
+
+}
+int f1ans=ans;
+ cout<<ans<<"\n";
+vector<int>brr;
+for(int i =0;i<n;i++) {
+    
+    if(i<f_cl || i>f_cr) brr.push_back(arr[i]);
+}
+
+sort(brr.begin(),brr.end());
+ l=0; 
+ 
+ ans=INT_MIN;
+for(int r=0;r<brr.size();r++){
+    //add
+    while(l<brr.size() && brr[r]-brr[l]>k)
+    //remove
+        l++;
+         ans=max(ans,r-l+1);
+         f_cl=l;f_cr=r;
+
+}
+
+cout<<ans+f1ans<<"\n";
+    return 0;
+}
