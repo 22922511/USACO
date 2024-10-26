@@ -1,0 +1,31 @@
+ #include <bits/stdc++.h>
+ using namespace std;
+ #define int long long
+  int n,k; 
+  vector<int>arr,brr;
+void ai(int vivek[],int n)  {for(int i=0;i<n;i++) cin>>vivek[i];}
+void ai(vector<int>&vivek,int n) {for(int i=0;i<n;i++) cin>>vivek[i];}
+
+signed main()
+{
+  cin>> n>>k;
+ 
+multiset<int>v;
+for(int i=0;i<n;i++){
+ int a;
+    cin>>a;
+    v.insert(a);
+}for(int i=0;i<k;i++){
+ int m; cin>>m;
+   auto id=v.upper_bound(m);
+   if(id==v.begin()){
+       cout<<-1<<"\n";
+   }else{ cout<<*(--id)<<"\n";
+       v.erase(id);
+   }
+}
+ 
+   
+  
+    return 0;
+}
